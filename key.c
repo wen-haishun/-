@@ -1,6 +1,16 @@
 #include "key.h"
-
-/*该状态机实现了按键的短按长按和双击功能，不难理解*/
+#include "main.h"
+/*该状态机实现了按键的短按长按和双击功能，使用状态机实现很好理解*/
+/*在cubemax的配置是把四个GPIO设置为输入模式，开启定时器4,建议分屏80-1，重装载10000-1*/
+struct keys
+{
+    u8      key_steps;      //执行到的步骤
+    _Bool   key_status;     //引脚的转态
+    _Bool   key_ok;         //短按
+    _Bool   key_long_hit;   //长按
+    _Bool   key_dble_hit;   //双击
+    _Bool   key_dble_flag;  //进入双击判断标志
+};
 
 struct keys key[4] = { 0 };
 
@@ -25,7 +35,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)//定时器回调函�
                     if(key[i].key_status == 0)//如果按下了
                     {
                         long_time = 0;        //长按重新计时
-                        key[i].key_steps = 1; //跳到第二步执行，相当于延时了10ms
+                        key[i].key_steps = 1; //跳到第二步执行，相当于延时了10ms（消抖）
                     }
                 }break; 
                 case 1:
@@ -35,7 +45,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)//定时器回调函�
                         key[i].key_steps = 2; //跳到第三步执行，如果仅仅使用短按，在此步即可实现
                      }
                      else
-                        key[i].key_steps = 0; //如果10ms内松开了回到第一步
+                        key[i].key_steps = 0; //松开了回到第一步
                 }break;
                 case 2:
                 {
@@ -77,5 +87,21 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)//定时器回调函�
 }
 
 
-
-
+//在main函数中的实现，放while(1)即可
+void KEY_Proc(void)
+{
+    if(key[0].key_ok == 1) // 表示KEY1短按
+    {
+        { }
+        key[0].key_ok = 0;//必须置0
+    }
+    if(key[0].key_long_hit == 1)// 表示KEY1长按  在状态机中置0了
+    {
+        { }
+    }
+    if(key[0].key_dble_hit == 1)// 表示KEY1双击
+    {
+        { }
+        key[0].key_dble_hit = 0;  //必须置0
+    }
+}
