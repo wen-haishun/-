@@ -1,11 +1,11 @@
-#include "main.h"   // Ğè°üº¬Õâ¸öÍ·ÎÄ¼ş
-		     //×Ô¼º¶¨ÒåÍ·ÎÄ¼ş£¬ÀàËÆ"bsp_rtc.h" 
+#include "main.h"   // éœ€åŒ…å«è¿™ä¸ªå¤´æ–‡ä»¶
+		     //è‡ªå·±å®šä¹‰å¤´æ–‡ä»¶ï¼Œç±»ä¼¼"bsp_rtc.h" 
 
-/*RTC,cubemxÖĞÍ¬²½Ô¤·ÖÅäÖµ31£¬Òì²½Ô¤·ÖÅäÖµ999£¬Ïà¹ØµÄÊ±¼ä×ÔĞĞÉèÖÃ*/
-RTC_TimeTypeDef rtc_time;  //Ê±·ÖÃëµÈ½á¹¹Ìå 
-RTC_DateTypeDef rtc_date;  //ÄêÔÂÈÕ½á¹¹Ìå 
+/*RTC,cubemxä¸­åŒæ­¥é¢„åˆ†é¢‘å€¼31ï¼Œå¼‚æ­¥é¢„åˆ†é¢‘å€¼999ï¼Œç›¸å…³çš„æ—¶é—´è‡ªè¡Œè®¾ç½®*/
+RTC_TimeTypeDef rtc_time;  //æ—¶åˆ†ç§’ç­‰ç»“æ„ä½“ 
+RTC_DateTypeDef rtc_date;  //å¹´æœˆæ—¥ç»“æ„ä½“ 
 void RTC_Process()
 {
-	HAL_RTC_GetTime(&hrtc, &rtc_time, RTC_FORMAT_BIN); //»ñÈ¡Ê±¼ä£¬¶ş½øÖÆ¸ñÊ½ 
-	HAL_RTC_GetDate(&hrtc, &rtc_date, RTC_FORMAT_BIN); //»ñÈ¡Ê±¼ä£¬¶ş½øÖÆ¸ñÊ½ 
+	HAL_RTC_GetTime(&hrtc, &rtc_time, RTC_FORMAT_BIN); //è·å–æ—¶é—´ï¼ŒäºŒè¿›åˆ¶æ ¼å¼ 
+	HAL_RTC_GetDate(&hrtc, &rtc_date, RTC_FORMAT_BIN); //è·å–æ—¶é—´ï¼ŒäºŒè¿›åˆ¶æ ¼å¼ 
 }
