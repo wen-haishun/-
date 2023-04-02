@@ -9,3 +9,7 @@ void RTC_Process()
 	HAL_RTC_GetTime(&hrtc, &rtc_time, RTC_FORMAT_BIN); //获取时间，二进制格式 
 	HAL_RTC_GetDate(&hrtc, &rtc_date, RTC_FORMAT_BIN); //获取时间，二进制格式 
 }
+
+
+
+//在main函数中把两个结构体里的成员变量调用即可
