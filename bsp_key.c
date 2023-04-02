@@ -1,5 +1,5 @@
-#include "key.h"
-#include "main.h"
+#include "main.h"   //需要包含这个头文件
+                    //自己定义头文件，类似"bsp_key.h"
 /*该状态机实现了按键的短按长按和双击功能，使用状态机实现很好理解*/
 /*在cubemax的配置是把四个GPIO设置为输入模式，开启定时器4,建议分屏80-1，重装载10000-1*/
 /*建议把结构体放在key.h中，这里不提供.h文件*/
@@ -88,7 +88,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)//定时器回调函�
 }
 
 
-//在main函数中的实现，放while(1)即可
+//在main函数中的实现，函数名放while(1)即可
 void KEY_Proc(void)
 {
     if(key[0].key_ok == 1) // 表示KEY1短按
