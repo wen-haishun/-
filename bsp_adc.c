@@ -2,7 +2,7 @@
 		     //自己定义头文件，类似"bsp_adc.h"
 
 /*二路ADC测量，对应开发板上的R37和R38*/
-/*cubemax的配置PB15和PB12*/
+/*cubemx的配置PB15和PB12*/
 u16 	adc1_val,adc2_val;
 float   volt_r37,volt_r38;
 void ADC_Process(void)
