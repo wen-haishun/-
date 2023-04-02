@@ -1,6 +1,6 @@
-#include "main.h" 
+#include "main.h"   // 需包含这个头文件
 
-// ADCִ�г���
+// ADCÖ´ÐÐ³ÌÐò
 u16 adc1_val,adc2_val;
 float volt_r37,volt_r38,volt_mcp;
 void ADC_Process(void)
