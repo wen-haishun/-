@@ -1,4 +1,5 @@
-#include "led.h"
+#include "main.h"       //需包含的头文件
+                        //自己定义头文件，类似"bsp_led.h"
 /*
     C引脚的高八位控制led，先让高八位置1让led灯全灭。
     使用八位的变量左移八位达到控制led。
